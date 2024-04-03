@@ -8,7 +8,7 @@ FM: '>';
 AP: '(';
 FP: ')';
 
-// COMANDOS ESCRITA E LEITURA
+// COMANDOS ESTheCRITA E LEITURA
 
 OUTPUT: 'EXIBA'AP+(ID | PALAVRA)+FP;
 INPUT: 'RECEBA'AP+ID+FP;
@@ -29,6 +29,9 @@ SE_DEC: 'SE' EXPRESSAO DEC;
 
 
 // Estrutura de Repetição
+
+
+EXPRESSAO:
 
 
 

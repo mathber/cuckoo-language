@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Lexer {
 
     public static void  main (String[] args){
-        String filename = "D:\\mathe\\Documents\\Faculdade\\compiladores\\AnalisadorLexico\\src\\main\\java\\codigo.txt";
+        String filename = "D:\\mathe\\Documents\\Faculdade\\compiladores\\AnalisadorLexico\\src\\main\\java\\fibonacci.txt";
         try{
             CharStream input = CharStreams.fromFileName(filename);
             CuckooLexer lexer = new CuckooLexer(input);

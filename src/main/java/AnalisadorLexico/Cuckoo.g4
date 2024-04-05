@@ -2,49 +2,57 @@ grammar Cuckoo;
 
 TIPO: 'INT' | 'REAL' | 'PAL' | 'VOUF';
 
-AM: '<';
-FM: '>';
-
 AP: '(';
 FP: ')';
 
-// COMANDOS ESTheCRITA E LEITURA
+PONTO: '.';
 
-OUTPUT: 'EXIBA'AP+(ID | PALAVRA)+FP;
-INPUT: 'RECEBA'AP+ID+FP;
+INICIO: 'COMECO';
+FIM: 'FIM';
 
+COMENT: '%'(CARACTERE)*'%';
 
 ID: '@'LETRA(DIGITO|LETRA)*;
 NUM: DIGITO+('.'DIGITO+)?;
+STRING: '`'(CARACTERE)*'`';
 
-OP_ARIT: '+'|'-'|'*'|'/';
-OP_LOG: '==' | '=/=' | '>' | '<' | '=>' | '=<';
+ATRIBUI: '<-';
 
-// Estrutura Condicional
+OP_ARIT: '+'|'-'|'*'|':'|'::'|'#';
+OP_REL: '==' | '=/=' | '>>' | '<<' | '=>' | '=<';
+OP_LOG: 'OU' | 'E' | 'NAO' ;
+CONCATENA: '&';
 
-SE_DEC: 'SE' EXPRESSAO DEC;
+// ESTRUTURA CONDICIONAL
+IF: 'SE';
+ELIF: 'DOCONTRARIO SE';
+ELSE: 'DOCONTRARIO';
 
+// ESTRUTURA DE REPETIÇÃO
+WHILE: 'DURANTE';
 
+// COMANDO DE ESCRITA E LEITURA
+OUTPUT: 'EXIBA';
+INPUT: 'RECEBA';
 
+// FUNÇÃO
+FUNC: 'FUNCAO';
+VOID: 'VAZIO';
 
+AM: '<';
+FM: '>';
 
-// Estrutura de Repetição
+SEPARACAO: ';';
+RETURN: 'VOLTE';
 
-
-EXPRESSAO:
-
-
-
-// Função
-
+ID_FUNC: '_'LETRA(DIGITO|LETRA)*;
 
 fragment LETRA: [a-zA-Z];
 fragment DIGITO: [0-9];
-fragment ESPECIAL: [!@#$%^&(*)-_={+};:,.<>?/|];
+fragment ESPECIAL : '+' | '-' | '*' | '/' | '=' | '<' | '>' | '(' | ')' | '{' | '}' | '[' | ']' | ',' | ';' | '.' | ':' | '|' | '&' | '%' ;
 
 fragment CARACTERE : LETRA | DIGITO | ESPECIAL | [ \t\r\n];
 
-fragment PALAVRA: '`'(CARACTERE)*'`';
-
 // Ignora espaços em branco
 WS: [ \r\t\n]* ->skip;
+ErrorChar: . ;

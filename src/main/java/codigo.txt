@@ -1,41 +1,32 @@
-FUNCAO VAZIA semRetorno <INT a, INT b> (
+FUNCAO VAZIO _semRetorno <INT @a; INT @b> (
 
 )
 
 
-FUNCAO INT fibonacci <INT n> (
+FUNCAO INT _fibonacci <INT @n> (
 
     VOLTE 2.
 )
 
-FUNCAO INT fatorial <INT n> (
-
+FUNC INT _fatorial<INT @n> (
     SE n == 0 (
         VOLTE 1.
+    ) DOCONTRARIO (
+        VOLTE @n * _fatorial(@n - 1).
     )
-
-    SE n == 1 (
-        VOLTE 1.
-    )
-
-    VOLTE n * fatorial(n - 1).
-
 )
 
 
 COMECO
-    INT numero.
-    REAL real.
-    PAL palavra.
-    VOUF booleano.
+    INT @numero.
+    REAL @real.
+    PAL @palavra.
+    VOUF @booleano.
 
-    numero <- 12.
+    @numero <- 12.
 
-    operadores logicos --> == =/= > < => =< 
-    operadores aritmeticos --> * + - :(divisao real) ::(divisao inteira) #(resto)
-    operador de concatenação de strings --> & ex a & b 
 
-    SE a > 0 (
+    SE @a >> 0 (
 
     ) DOCONTRARIO SE (
 
@@ -43,16 +34,16 @@ COMECO
 
     )
 
-    DURANTE i < 1 (
+    DURANTE @i << 1 (
 
     ) 
 
-    EXIBA(a).
+    EXIBA<@a>.
 
-    RECEBA(a).
+    RECEBA<@a>.
 
-    EXIBA(`ansdjkdhnasjkdas`)
+    EXIBA<`ansdjkdhnasjkdas`>.
 
-    fibonacci(2).
+    _fibonacci<2>.
 
 FIM

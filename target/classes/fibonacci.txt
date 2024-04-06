@@ -15,5 +15,4 @@ COMECO
     RECEBA<@n>.
     @resposta <- _somaFibonacci<@n>.
     EXIBA<@resposta>.
-
 FIM

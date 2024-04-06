@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 public class Lexer {
 

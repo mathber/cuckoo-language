@@ -4,11 +4,12 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Lexer {
 
     public static void  main (String[] args){
-        String filename = "D:\\mathe\\Documents\\Faculdade\\compiladores\\AnalisadorLexico\\src\\main\\java\\fibonacci.txt";
+        String filename = System.getProperty("user.dir") + "\\AnalisadorLexico\\src\\main\\java\\fibonacci.txt";
         try{
             CharStream input = CharStreams.fromFileName(filename);
             CuckooLexer lexer = new CuckooLexer(input);

@@ -13,7 +13,7 @@ FIM: 'FIM';
 COMENT: '%'(CARACTERE)*'%';
 
 ID: '@'LETRA(DIGITO|LETRA)*;
-NUM: DIGITO+('.'DIGITO+)?;
+NUM: DIGITO+(','DIGITO+)?;
 STRING: '`'(CARACTERE)*'`';
 
 ATRIBUI: '<-';

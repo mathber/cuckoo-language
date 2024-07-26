@@ -1,16 +1,14 @@
-FUNCAO INT fatorial<INT @n> (
-    SE n == 0 (
+FUNCAO INT _fatorial<INT @n> (
+    SE @n == 0 (
         VOLTE 1.
     ) DOCONTRARIO (
-        VOLTE @n * fatorial<@n - 1>.
+        VOLTE @n * _fatorial<@n - 1>.
     )
 )
-
 COMECO
     INT @n.
     INT @resposta.
-
     RECEBA<@n>.
-    @resposta <- fatorial<@n>.
+    @resposta <- _fatorial<@n>.
     EXIBA<@resposta>.
 FIM

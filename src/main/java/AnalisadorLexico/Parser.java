@@ -1,13 +1,12 @@
 package AnalisadorLexico;
-
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.Token;
-
+import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.IOException;
 
-public class Lexer {
+public class Parser {
 
     public static void  main (String[] args){
         String filename = System.getProperty("user.dir") + "\\AnalisadorLexico\\src\\main\\java\\fatorial.txt";
@@ -15,11 +14,10 @@ public class Lexer {
             CharStream input = CharStreams.fromFileName(filename);
             CuckooLexer lexer = new CuckooLexer(input);
 
-            Token token;
-            while (!lexer._hitEOF){
-                token = lexer.nextToken();
-                System.out.println("Token: " + "<Classe: " + lexer.getVocabulary().getDisplayName(token.getType()) + ", Lexema: " + token.getText() + ">");
-            }
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            CuckooParser parser = new CuckooParser(tokens);
+
+            ParseTree ast = parser.programa();
 
         } catch (IOException e){
             e.printStackTrace();

@@ -1,0 +1,38 @@
+% isso é uma função que retorna uma string verdadeira ou falsa %
+
+FUNCAO PAL _verdadeOuNao<VOUF @boolean> (
+    SE @boolean (
+        VOLTE `Isso é verdade!`.
+    ) DOCONTRARIO SE @boolean == FALSO (
+        VOLTE `Isso é` + `falso` + `!`.
+    )
+)
+
+% isso é uma função que printa Olá mundo! de acordo com a quantidade de vezes q o usuário escolhe %
+FUNCAO VAZIO _olamundo<> (
+
+    VOUF @ai.
+    @ai <- VERDADE.
+
+    _verdadeOuNao<@ai>.
+
+    INT @i.
+    RECEBA <@i>.
+
+    DURANTE @i >> 1 E @ai => 2(
+        EXIBA<`Olá mundo!`>.
+    )
+)
+
+COMECO
+
+    PAL @word.
+    @word <- `Esse definitivamente é um programa!\n`.
+    EXIBA<@word>.
+
+    _olamundo<>.
+    INT @num.
+    @num <- 2,23 + 2 :: 3.
+    EXIBA<@num>.
+
+FIM

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class AnalisadorSemantico {
     public static void main(String[] args){
 
-        String filename = System.getProperty("user.dir") + "\\AnalisadorLexico\\src\\main\\java\\fibonacci.txt";
+        String filename = System.getProperty("user.dir") + "\\AnalisadorLexico\\src\\main\\java\\fatorial.txt";
 
         CuckooParser parser = getParser(filename);
         ParseTree ast = parser.programa();

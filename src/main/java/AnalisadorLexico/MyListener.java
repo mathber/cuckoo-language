@@ -48,7 +48,11 @@ public class MyListener extends CuckooBaseListener {
     @Override
     public void enterFuncao(CuckooParser.FuncaoContext ctx) {
 
-        escopoGlobal.put(ctx.ID_FUNC().getText(), ctx.TIPO().getText());
+        if(escopoGlobal.containsKey(ctx.ID_FUNC().getText())){
+            System.out.printf("Erro: Declaração duplicada de função '%s' na linha %d, coluna %d.%n", ctx.ID_FUNC(), ctx.ID_FUNC().getSymbol().getLine(), ctx.ID_FUNC().getSymbol().getCharPositionInLine());
+        } else {
+            escopoGlobal.put(ctx.ID_FUNC().getText(), ctx.TIPO().getText());
+        }
 
         escopoAtual = new HashMap<String, String>(escopoGlobal);
         escoposPilha.push(escopoAtual);

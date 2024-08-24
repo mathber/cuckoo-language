@@ -12,13 +12,13 @@ declr: TIPO ID;
 retorno: RETURN operacoes;
 // ATRIBUIÇÃO
 atrib: ID ATRIBUI operacoes;
-operando: ID|NUM|STRING|BOOL|chamada_func;
+operando: ID|NUM_INT|NUM_REAL|STRING|BOOL|chamada_func;
 // OPERAÇÃO ARITMÉTICA
 operacao_arit: operando operacao_cauda_arit;
 operacao_cauda_arit: OP_ARIT operando (operacao_cauda_arit)*;
 // OPERAÇÃO CONCATENAÇÃO
 operacao_concat: operando operacao_cauda_concat;
-operacao_cauda_concat: CONCATENA STRING (operacao_cauda_concat)*;
+operacao_cauda_concat: CONCATENA operando (operacao_cauda_concat)*;
 // OPERAÇÃO LÓGICA
 operacao_log: operando operacao_cauda_log;
 operacao_cauda_log: OP_LOG operando (operacao_cauda_log)*;
@@ -50,7 +50,10 @@ INICIO: 'COMECO';
 FIM: 'FIM';
 
 ID: '@'LETRA(DIGITO|LETRA)*;
-NUM: DIGITO+(','DIGITO+)?;
+
+NUM_INT: DIGITO;
+NUM_REAL: DIGITO+','DIGITO+;
+
 STRING: '`' (~[`])* '`';
 BOOL: 'VERDADE'|'FALSO';
 
@@ -95,4 +98,3 @@ fragment CARACTERE : LETRA | DIGITO | ESPECIAL | [ \t\r\n];
 COMENT: '%'~[\r]*'%' -> skip;
 // Ignora espaços em branco
 WS: [ \t\r\n]+ -> skip;
-ErrorChar: . ;

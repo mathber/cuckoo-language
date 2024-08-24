@@ -1,13 +1,3 @@
-FUNCAO INT _somaFibonacci<INT @n> (
-   SE @n == 0 (
-       VOLTE 0.
-   ) DOCONTRARIO SE @n == 1(
-       VOLTE 1.
-   ) DOCONTRARIO (
-       VOLTE _somaFibonacci<@n - 1> + _fibonacci<@n>.
-   )
-)
-
 FUNCAO INT _fibonacci<INT @n> (
     SE @n == 0 (
         VOLTE 0.
@@ -16,6 +6,16 @@ FUNCAO INT _fibonacci<INT @n> (
     ) DOCONTRARIO (
         VOLTE _fibonacci<@n - 1> + _fibonacci<@n - 2>.
     )
+)
+
+FUNCAO INT _somaFibonacci<INT @n> (
+   SE @n == 0 (
+       VOLTE 0.
+   ) DOCONTRARIO SE @n == 1(
+       VOLTE 1.
+   ) DOCONTRARIO (
+       VOLTE _somaFibonacci<@n - 1> + _fibonacci<@n>.
+   )
 )
 
 COMECO

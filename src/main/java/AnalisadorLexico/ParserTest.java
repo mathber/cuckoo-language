@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.IOException;
 
-public class Parser {
+public class ParserTest {
 
     public static void  main (String[] args){
         String filename = System.getProperty("user.dir") + "\\AnalisadorLexico\\src\\main\\java\\fatorial.txt";

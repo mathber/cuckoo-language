@@ -5,9 +5,11 @@ FUNCAO INT _fatorial<INT @n> (
         VOLTE @n * _fatorial<@n - 1>.
     )
 )
+
 COMECO
     INT @n.
     INT @resposta.
+
     RECEBA<@n>.
     @resposta <- _fatorial<@n>.
     EXIBA<@resposta>.

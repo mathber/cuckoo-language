@@ -3,7 +3,6 @@ package AnalisadorLexico;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
-import java.util.List;
 
 public class MyListener extends CuckooBaseListener {
     private final Stack<Map<String, String>> escoposPilha = new Stack<>();
@@ -11,12 +10,13 @@ public class MyListener extends CuckooBaseListener {
     private Map<String, String> escopoGlobal;
 
     private boolean isVariableDeclared(String id) {
-        for (Map<String, String> scope : escoposPilha) {
-            if (scope.containsKey(id)) {
+        if (!escoposPilha.isEmpty()) {
+            Map<String, String> escopoAtual = escoposPilha.peek();
+            if (escopoAtual.containsKey(id)) {
                 return true;
             }
         }
-        return false;
+        return escopoGlobal.containsKey(id);
     }
 
     private String getTipoOperando(CuckooParser.OperandoContext ctx) {
@@ -63,6 +63,20 @@ public class MyListener extends CuckooBaseListener {
         escoposPilha.pop();
         if (!escoposPilha.isEmpty()) {
             escopoAtual = escoposPilha.peek();
+        }
+    }
+
+    @Override
+    public void enterChamada_func(CuckooParser.Chamada_funcContext ctx){
+        if (ctx.ID_FUNC() != null) {
+            String id = ctx.ID_FUNC().getText();
+
+            int linha = ctx.ID_FUNC().getSymbol().getLine();
+            int coluna = ctx.ID_FUNC().getSymbol().getCharPositionInLine();
+
+            if (!isVariableDeclared(id)) {
+                System.out.printf("Erro: Função '%s' não declarada utilizada na linha %d, coluna %d.%n", id, linha, coluna);
+            }
         }
     }
     @Override
@@ -213,7 +227,6 @@ public class MyListener extends CuckooBaseListener {
             System.out.printf("Erro: Incompatibilidade de tipos entre '%s' e '%s' na linha %d, coluna %d.%n",
                     tipoOperando, tipoCauda, caudaAtual.getStart().getLine(), caudaAtual.getStart().getCharPositionInLine());
         }
-
     }
 
     @Override
